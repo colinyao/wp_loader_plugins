@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {index: './entry.js'},
   mode: 'development',
@@ -15,5 +16,11 @@ module.exports = {
       test: /\.js$/,
       use: ['./loader/sendTime-longer.js']
     }]
-  }
+  },
+  plugins:[
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'index.html'),
+      filename: 'index.html',
+    })
+  ]
 }
